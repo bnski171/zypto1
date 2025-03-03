@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zypto Wallet</title>
+
+  <!-- Подключаем reset.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  <!-- Подключаем шрифты Golos Text -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;700;900&display=swap">
+
+  <style>
+    /* Общие стили из globals.css */
+    * {
+      -webkit-font-smoothing: antialiased;
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      height: 100%;
+    }
+    button:focus-visible {
+      outline: 2px solid #4a90e2 !important;
+      outline: -webkit-focus-ring-color auto 5px !important;
+    }
+    a {
+      text-decoration: none;
+    }
+
+    /* Стили из style.css */
+    body {
+      background-color: #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .iphone-pro {
+      background-color: #000000;
+      width: 402px;
+      height: 874px;
+      position: relative;
+      overflow: hidden;
+    }
+    .overlap {
+      position: absolute;
+      width: 402px;
+      height: 607px;
+      top: 0;
+      left: 0;
+    }
+    .frame {
+      position: absolute;
+      width: 402px;
+      height: 532px;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+    }
+    .text-wrapper {
+      position: absolute;
+      width: 372px;
+      top: 531px;
+      left: 21px;
+      font-family: 'Golos Text', sans-serif;
+      font-weight: 900;
+      color: #ffffff;
+      font-size: 32px;
+    }
+    .text-wrapper-2 {
+      position: absolute;
+      width: 270px;
+      top: 620px;
+      left: 21px;
+      font-family: 'Golos Text', sans-serif;
+      font-weight: 400;
+      color: #ffffff;
+      font-size: 24px;
+    }
+    .overlap-group {
+      position: absolute;
+      width: 344px;
+      height: 65px;
+      top: 718px;
+      left: 29px;
+      background-color: #ffffff;
+      border-radius: 26.38px;
+      cursor: pointer;
+    }
+    .text-wrapper-3 {
+      position: absolute;
+      top: 12px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-family: 'Golos Text', sans-serif;
+      font-weight: 700;
+      color: #000000;
+      font-size: 32.8px;
+    }
+    .div-wrapper {
+      position: absolute;
+      width: 178px;
+      height: 34px;
+      top: 812px;
+      left: 118px;
+      background-color: #ffffff;
+      border-radius: 26.38px;
+      cursor: pointer;
+    }
+    .text-wrapper-4 {
+      position: absolute;
+      top: 3px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-family: 'Golos Text', sans-serif;
+      font-weight: 700;
+      color: #000000;
+      font-size: 21px;
+    }
+
+    /* Адаптивность для мобильных устройств */
+    @media (max-width: 480px) {
+      .iphone-pro {
+        width: 100%;
+        height: 100vh;
+      }
+      .frame, .overlap {
+        width: 100%;
+        height: auto;
+      }
+      .text-wrapper, .text-wrapper-2 {
+        width: calc(100% - 40px);
+        left: 20px;
+      }
+      .overlap-group, .div-wrapper {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="iphone-pro">
+    <div class="overlap">
+      <!-- Поменяйте путь на актуальный -->
+      <img class="frame" src="img/frame-6.png" alt="Main graphics"/>
+      <p class="text-wrapper">Your Crypto Wallet for a Stable World</p>
+    </div>
+    <div class="text-wrapper-2">✨100% USDT. 100% Simple✨</div>
+
+    <div class="overlap-group">
+      <div class="text-wrapper-3">Start now</div>
+    </div>
+
+    <div class="div-wrapper">
+      <div class="text-wrapper-4">Login</div>
+    </div>
+  </div>
+</body>
+</html>
