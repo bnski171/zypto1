@@ -4,120 +4,272 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zypto - Your Crypto Wallet for a Stable World</title>
+    <!-- Golos Text font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+        /* Base Styles & Reset */
+        :root {
+            --primary-color: #330a3c;
+            --accent-color: rgb(255, 105, 255);
+            --text-color: white;
+            --glow-color: rgba(255, 105, 255, 0.7);
+            --button-color: white;
+            --button-text: #330a3c;
+            --sparkle-color: #ffcc00;
+            --footer-link-color: rgba(255, 255, 255, 0.7);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Golos Text', 'Arial', sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow-x: hidden;
         }
 
         body {
             background: linear-gradient(135deg, #1a0a20 0%, #330a3c 50%, #1a0a20 100%);
-            color: white;
-            min-height: 100vh;
-            overflow-x: hidden;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
+        /* Main Container */
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Background Effects */
+        .background-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            opacity: 0.6;
+        }
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .orb1 {
+            width: 50vh;
+            height: 50vh;
+            background: radial-gradient(circle, rgba(161, 104, 255, 0.3) 0%, rgba(161, 104, 255, 0) 70%);
+            top: 10%;
+            left: 10%;
+            animation: float-slow 15s infinite alternate ease-in-out;
+        }
+
+        .orb2 {
+            width: 40vh;
+            height: 40vh;
+            background: radial-gradient(circle, rgba(255, 105, 255, 0.2) 0%, rgba(255, 105, 255, 0) 70%);
+            bottom: 10%;
+            right: 10%;
+            animation: float-slow 12s infinite alternate-reverse ease-in-out;
+        }
+
+        /* Logo Section */
+        .logo-section {
+            padding: 20px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            justify-content: center;
         }
 
         .logo-container {
             width: 80%;
-            max-width: 350px;
+            max-width: 320px;
             position: relative;
-            margin-bottom: 30px;
             text-align: center;
         }
 
         .logo {
             width: 100%;
             height: auto;
-            filter: drop-shadow(0 0 15px rgba(255, 105, 255, 0.7));
+            filter: drop-shadow(0 0 15px var(--glow-color));
+            transition: all 0.5s ease;
         }
 
-        .content {
+        /* Content Section */
+        .main-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            width: 100%;
+            gap: 15px;
+            padding: 15px;
+            z-index: 2;
             position: relative;
-            z-index: 1;
+            width: 100%;
         }
 
         .main-title {
             font-size: 2.5rem;
-            font-weight: bold;
+            font-weight: 900; /* Golos Text Black */
             margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(255, 105, 255, 0.7);
+            text-shadow: 0 0 15px rgba(255, 105, 255, 0.5);
+            line-height: 1.2;
+            background: linear-gradient(to right, #ffffff, #e0c3ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            max-width: 90%;
         }
 
         .usdt-text {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
+            font-size: 1.3rem;
+            margin: 15px 0 30px;
             color: #f5f5f5;
-            font-weight: 600;
+            font-weight: 400; /* Golos Text Regular */
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
+            opacity: 0.9;
         }
 
         .sparkle {
             display: inline-block;
             margin: 0 5px;
-            color: #ffcc00;
+            color: var(--sparkle-color);
             font-size: 1.5rem;
+            animation: twinkle 2s infinite alternate;
         }
 
+        /* CTA Buttons */
         .cta-buttons {
             display: flex;
             flex-direction: column;
             gap: 15px;
             width: 100%;
             max-width: 350px;
-            margin: 0 auto;
+            margin: 10px auto 0;
         }
 
         .cta-button {
             padding: 16px 30px;
             border-radius: 50px;
             font-size: 1.2rem;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+            outline: none;
         }
 
         .primary-button {
-            background-color: white;
-            color: #330a3c;
-            border: none;
+            background-color: var(--button-color);
+            color: var(--button-text);
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
         }
 
-        .primary-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+        .primary-button:hover, .primary-button:focus {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 5px 25px rgba(255, 255, 255, 0.6);
+        }
+
+        .primary-button:active {
+            transform: translateY(1px);
         }
 
         .secondary-button {
             background-color: transparent;
-            color: white;
-            border: 2px solid white;
+            color: var(--text-color);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
         }
 
-        .secondary-button:hover {
+        .secondary-button:hover, .secondary-button:focus {
             background-color: rgba(255, 255, 255, 0.1);
             transform: translateY(-3px);
+            border-color: white;
         }
 
+        .secondary-button:active {
+            transform: translateY(1px);
+        }
+
+        /* Footer Section */
+        .footer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            margin-top: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-link {
+            color: var(--footer-link-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .footer-link:hover, .footer-link:focus {
+            color: white;
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .footer-link:hover::after, .footer-link:focus::after {
+            width: 100%;
+        }
+
+        /* Decorative Elements */
         .decorations {
             position: absolute;
             width: 100%;
@@ -126,6 +278,7 @@
             left: 0;
             overflow: hidden;
             pointer-events: none;
+            z-index: 1;
         }
 
         .sparkle-decoration {
@@ -136,6 +289,7 @@
             border-radius: 2px;
             transform: rotate(45deg);
             animation: float 6s infinite ease-in-out;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
         }
 
         .sp1 {
@@ -167,6 +321,7 @@
             background: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
             animation: float 4s infinite ease-in-out;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
 
         .dot1 {
@@ -191,13 +346,15 @@
                 radial-gradient(circle at 50% 50%, rgba(255, 105, 255, 0.2) 2px, transparent 2px),
                 rgba(255, 105, 255, 0.1);
             background-size: 20px 20px;
-            top: 40%;
+            top: 45%;
             right: 15%;
             border-radius: 10px;
             transform: rotate(15deg);
             animation: pulse 5s infinite alternate;
+            backdrop-filter: blur(3px);
         }
 
+        /* Animations */
         @keyframes float {
             0%, 100% {
                 transform: translateY(0) rotate(45deg);
@@ -206,6 +363,15 @@
             50% {
                 transform: translateY(-15px) rotate(45deg);
                 opacity: 1;
+            }
+        }
+
+        @keyframes float-slow {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                transform: translateY(-30px) scale(1.1);
             }
         }
 
@@ -220,49 +386,89 @@
             }
         }
 
-        /* Moved the main content section up to be closer to the logo */
-        .main-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+        @keyframes twinkle {
+            0% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
         }
 
-        /* Responsive adjustments */
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .main-title {
+                font-size: 2.2rem;
+            }
+
+            .mesh-grid {
+                width: 180px;
+                height: 180px;
+            }
+        }
+
         @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+                justify-content: flex-start;
+            }
+
+            .logo-section {
+                padding-top: 40px; /* Added extra padding to prevent glow cropping */
+                margin-bottom: 0;
+            }
+
             .main-title {
                 font-size: 2rem;
+                margin-top: 15px;
             }
             
             .usdt-text {
-                font-size: 1rem;
+                font-size: 1.1rem;
+                margin: 10px 0 25px;
             }
             
             .logo-container {
                 width: 70%;
-                margin-bottom: 20px;
+                max-width: 280px;
             }
             
             .mesh-grid {
                 width: 150px;
                 height: 150px;
                 right: 10%;
+                top: 50%;
+            }
+
+            .orb1, .orb2 {
+                opacity: 0.5;
             }
         }
 
         @media (max-width: 480px) {
-            .main-title {
-                font-size: 1.8rem;
+            .container {
+                padding: 20px 15px;
+            }
+
+            .logo-section {
+                padding-top: 50px; /* Increased padding further for smaller screens */
             }
             
-            .container {
-                padding: 15px;
+            .main-title {
+                font-size: 1.8rem;
+                max-width: 100%;
+            }
+            
+            .usdt-text {
+                font-size: 1rem;
+                margin: 10px 0 20px;
             }
             
             .logo-container {
                 width: 80%;
-                margin-bottom: 15px;
+                max-width: 240px;
             }
             
             .cta-buttons {
@@ -278,34 +484,90 @@
                 width: 120px;
                 height: 120px;
                 right: 5%;
-                top: 50%;
+                opacity: 0.5;
             }
             
             .sparkle-decoration {
                 width: 30px;
                 height: 30px;
             }
+
+            .orb1 {
+                width: 40vh;
+                height: 40vh;
+            }
+
+            .orb2 {
+                width: 30vh;
+                height: 30vh;
+            }
+
+            .footer-links {
+                gap: 15px;
+            }
+
+            .footer-link {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Accessibility Improvements */
+        .cta-button:focus-visible, .footer-link:focus-visible {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+
+        /* Additional Enhancement for Ultrawide Displays */
+        @media (min-width: 1921px) {
+            .container {
+                max-width: 1400px;
+            }
+
+            .main-title {
+                font-size: 3rem;
+            }
+
+            .usdt-text {
+                font-size: 1.5rem;
+            }
+
+            .cta-button {
+                font-size: 1.4rem;
+                padding: 18px 36px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="background-effects">
+        <div class="gradient-orb orb1"></div>
+        <div class="gradient-orb orb2"></div>
+    </div>
+
     <div class="container">
-        <div class="main-section">
+        <div class="logo-section">
             <div class="logo-container">
                 <img src="https://i.postimg.cc/8zn22MV5/zypto3dlogo.png" alt="Zypto Logo" class="logo">
             </div>
+        </div>
 
-            <div class="content">
-                <h1 class="main-title">Your Crypto Wallet for a Stable World</h1>
-                <p class="usdt-text">
-                    <span class="sparkle">✨</span>100% USDT. 100% Simple<span class="sparkle">✨</span>
-                </p>
-                <div class="cta-buttons">
-                    <button class="cta-button primary-button">Start now</button>
-                    <button class="cta-button secondary-button">Login</button>
-                </div>
+        <div class="main-section">
+            <h1 class="main-title">Your Crypto Wallet for a Stable World</h1>
+            <p class="usdt-text">
+                <span class="sparkle">✨</span>100% USDT. 100% Simple<span class="sparkle">✨</span>
+            </p>
+            <div class="cta-buttons">
+                <button class="cta-button primary-button">Start now</button>
+                <button class="cta-button secondary-button">Login</button>
             </div>
         </div>
+
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Use</a>
+            </div>
+        </footer>
 
         <div class="decorations">
             <div class="sparkle-decoration sp1"></div>
@@ -318,19 +580,22 @@
     </div>
 
     <script>
-        // Optional JavaScript for additional interactivity
         document.addEventListener('DOMContentLoaded', function() {
-            // Add subtle hover effect to logo
+            // Enhanced logo hover effect
             const logo = document.querySelector('.logo');
             logo.addEventListener('mouseover', function() {
                 this.style.filter = 'drop-shadow(0 0 20px rgba(255, 105, 255, 0.9))';
+                this.style.transform = 'scale(1.05)';
             });
             logo.addEventListener('mouseout', function() {
                 this.style.filter = 'drop-shadow(0 0 15px rgba(255, 105, 255, 0.7))';
+                this.style.transform = 'scale(1)';
             });
             
-            // Create random sparkles dynamically
+            // Create dynamic decorative elements
             const decorations = document.querySelector('.decorations');
+            
+            // Random sparkles
             for (let i = 0; i < 5; i++) {
                 const size = Math.random() * 5 + 3;
                 const sparkle = document.createElement('div');
@@ -340,8 +605,37 @@
                 sparkle.style.left = `${Math.random() * 80 + 10}%`;
                 sparkle.style.top = `${Math.random() * 80 + 10}%`;
                 sparkle.style.animationDelay = `${Math.random() * 5}s`;
+                sparkle.style.opacity = `${Math.random() * 0.5 + 0.3}`;
                 decorations.appendChild(sparkle);
             }
+            
+            // Button interaction enhancements
+            const buttons = document.querySelectorAll('.cta-button');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.02)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+                button.addEventListener('mousedown', function() {
+                    this.style.transform = 'translateY(2px) scale(0.98)';
+                });
+                button.addEventListener('mouseup', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.02)';
+                });
+            });
+
+            // Footer link hover animation
+            const footerLinks = document.querySelectorAll('.footer-link');
+            footerLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.color = 'white';
+                });
+                link.addEventListener('mouseleave', function() {
+                    this.style.color = 'var(--footer-link-color)';
+                });
+            });
         });
     </script>
 </body>
